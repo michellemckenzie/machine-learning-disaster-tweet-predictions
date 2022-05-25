@@ -87,36 +87,36 @@ abbr_dict = {
 
 }
 adjectives = {
-    "angry ": '',
-    "brave ": '',
-    "careful ": '',
-    "healthy ": '',
-    "little ": '',
-    "old ": '',
-    "generous ": '',
-    "tall ": '',
-    "good ": '',
-    "big ": '',
-    "small ": '',
-    "am ": '',
+    " angry ": '',
+    " brave ": '',
+    " careful ": '',
+    " healthy ": '',
+    " little ": '',
+    " old ": '',
+    " generous ": '',
+    " tall ": '',
+    " good ": '',
+    " big ": '',
+    " small ": '',
+    " am ": '',
 }
 pronouns = {
-    "i ": '',
-    "he ": '',
-    "she ": '',
-    "its ": '',
-    "me ": '',
-    "my ": '',
-    "that ": '',
-    "they ": '',
-    "this ": '',
-    "those ": '',
+    " i ": '',
+    " he ": '',
+    " she ": '',
+    " its ": '',
+    " me ": '',
+    " my ": '',
+    " that ": '',
+    " they ": '',
+    " this ": '',
+    " those ": '',
 }
 
 articles = {
-    "the ": '',
-    "a ": '',
-    "an ": '',
+    " the ": '',
+    " a ": '',
+    " an ": '',
 }
 
 # Reads the data, converts to lowercase, and replaces using abbreviation list
