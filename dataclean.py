@@ -11,7 +11,7 @@ from collections import Counter
 
 import re
 
-punctuation = '["\'?,\.!=><#$%^&*()-+@[]\{\}_~`]'  # I will replace all these punctuation with ''
+#punctuation = '["'?,\.!=><#$%^&*()-+@[]\{\}_~`;:]'  # I will replace all these punctuation with ''
 # Add any words you want to be replaced and the conversion
 abbr_dict = {
     "'til": "until",
@@ -82,7 +82,6 @@ abbr_dict = {
     "hadn't": "had not",
     "won't": "will not",
     "#": "",
-    punctuation: '',
     '\s+': ' ',  # replace multi space with one single space
 
 }
@@ -124,7 +123,7 @@ articles = {
 
 def process_data(file_name):
     data = pd.read_csv(file_name)
-    data.drop(['id','location'], inplace = True)
+    data.drop(columns = ['id','location'], inplace = True)
     data.text = data.text.str.lower()  # convert tweet to lower case
     data.text = data.text.str.replace('\d+', '') #remove numbers
     data.keyword = data.keyword.str.lower() #convert keyword to lower case
@@ -137,5 +136,6 @@ def process_data(file_name):
      # remove http or https links from tweets
     for sentence in range(len(data['text'])):
         data['text'][sentence] = re.sub(r"http\S+", "", data['text'][sentence])
+        data['text'][sentence] = data['text'][sentence].translate(str.maketrans('', '', string.punctuation))
  
     return data
