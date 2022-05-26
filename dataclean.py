@@ -11,7 +11,7 @@ from collections import Counter
 
 import re
 
-punctuation = '["\'?,\.]'  # I will replace all these punctuation with ''
+punctuation = '["\'?,\.!=><#$%^&*()-+@[]\{\}_~`]'  # I will replace all these punctuation with ''
 # Add any words you want to be replaced and the conversion
 abbr_dict = {
     "'til": "until",
@@ -87,36 +87,36 @@ abbr_dict = {
 
 }
 adjectives = {
-    " angry ": '',
-    " brave ": '',
-    " careful ": '',
-    " healthy ": '',
-    " little ": '',
-    " old ": '',
-    " generous ": '',
-    " tall ": '',
-    " good ": '',
-    " big ": '',
-    " small ": '',
-    " am ": '',
+    " angry ": ' ',
+    " brave ": ' ',
+    " careful ": ' ',
+    " healthy ": ' ',
+    " little ": ' ',
+    " old ": ' ',
+    " generous ": ' ',
+    " tall ": ' ',
+    " good ": ' ',
+    " big ": ' ',
+    " small ": ' ',
+    " am ": ' ',
 }
 pronouns = {
-    " i ": '',
-    " he ": '',
-    " she ": '',
-    " its ": '',
-    " me ": '',
-    " my ": '',
-    " that ": '',
-    " they ": '',
-    " this ": '',
-    " those ": '',
+    " i ": ' ',
+    " he ": ' ',
+    " she ": ' ',
+    " its ": ' ',
+    " me ": ' ',
+    " my ": ' ',
+    " that ": ' ',
+    " they ": ' ',
+    " this ": ' ',
+    " those ": ' ',
 }
 
 articles = {
-    " the ": '',
-    " a ": '',
-    " an ": '',
+    " the ": ' ',
+    " a ": ' ',
+    " an ": ' ',
 }
 
 # Reads the data, converts to lowercase, and replaces using abbreviation list
@@ -124,17 +124,18 @@ articles = {
 
 def process_data(file_name):
     data = pd.read_csv(file_name)
-    data.text = data.text.str.lower()  # conver to lower case
-    data.keyword = data.keyword.str.lower()
-    data.text = data.text.astype(str)
+    data.drop(['id','location'], inplace = True)
+    data.text = data.text.str.lower()  # convert tweet to lower case
+    data.text = data.text.str.replace('\d+', '') #remove numbers
+    data.keyword = data.keyword.str.lower() #convert keyword to lower case
+    data.text = data.text.astype(str) #cast tweet as a string
     data.keyword = data.keyword.astype(str)
     data.replace(abbr_dict, regex=True, inplace=True)
     data.replace(pronouns, regex=True, inplace=True)
     data.replace(articles, regex=True, inplace=True)
-    data.head(2)
-    # remove http or https links from tweets
 
-    for sentence in range(len(data)):
-        # print(train_df['text'][sentence])
+     # remove http or https links from tweets
+    for sentence in range(len(data['text'])):
         data['text'][sentence] = re.sub(r"http\S+", "", data['text'][sentence])
+ 
     return data
