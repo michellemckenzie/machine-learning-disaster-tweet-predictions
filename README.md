@@ -10,3 +10,7 @@ https://medium.com/geekculture/how-to-fix-misspelled-words-for-your-next-nlp-pro
 https://www.kaggle.com/code/life2short/data-processing-replace-abbreviation-of-word/notebook
 
 https://towardsdatascience.com/nlp-text-preprocessing-and-cleaning-pipeline-in-python-3bafaf54ac35
+
+https://datagy.io/python-remove-punctuation-from-string/
+
+https://stackoverflow.com/questions/35070452/how-to-correct-spelling-in-a-pandas-dataframe

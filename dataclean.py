@@ -3,15 +3,13 @@ import numpy as np
 
 # NLP Packages
 from nltk.corpus import stopwords
-from textblob import TextBlob
-from textblob import Word
+import textblob
 import string
 from sklearn.feature_extraction.text import CountVectorizer
 from collections import Counter
 
 import re
 
-#punctuation = '["'?,\.!=><#$%^&*()-+@[]\{\}_~`;:]'  # I will replace all these punctuation with ''
 # Add any words you want to be replaced and the conversion
 abbr_dict = {
     "'til": "until",
@@ -119,8 +117,6 @@ articles = {
 }
 
 # Reads the data, converts to lowercase, and replaces using abbreviation list
-
-
 def process_data(file_name):
     data = pd.read_csv(file_name)
     data.drop(columns = ['id','location'], inplace = True)
@@ -133,7 +129,7 @@ def process_data(file_name):
     data.replace(pronouns, regex=True, inplace=True)
     data.replace(articles, regex=True, inplace=True)
 
-     # remove http or https links from tweets
+    # remove http or https links and punctuation from tweets
     for sentence in range(len(data['text'])):
         data['text'][sentence] = re.sub(r"http\S+", "", data['text'][sentence])
         data['text'][sentence] = data['text'][sentence].translate(str.maketrans('', '', string.punctuation))
