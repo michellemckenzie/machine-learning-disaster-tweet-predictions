@@ -14,3 +14,5 @@ https://towardsdatascience.com/nlp-text-preprocessing-and-cleaning-pipeline-in-p
 https://datagy.io/python-remove-punctuation-from-string/
 
 https://stackoverflow.com/questions/35070452/how-to-correct-spelling-in-a-pandas-dataframe
+
+https://www.holisticseo.digital/python-seo/nltk/lemmatize
