@@ -133,5 +133,5 @@ def process_data(file_name):
     for sentence in range(len(data['text'])):
         data['text'][sentence] = re.sub(r"http\S+", "", data['text'][sentence])
         data['text'][sentence] = data['text'][sentence].translate(str.maketrans('', '', string.punctuation))
- 
+
     return data
