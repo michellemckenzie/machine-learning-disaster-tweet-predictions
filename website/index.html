@@ -19,21 +19,20 @@
         <section id = 'information'>
             <section id = 'info'>
                 <p>Info</p>
-                <p>We have utilized Natural Language Processing (NLP) to scan thousands of tweets to detect if a tweet is about a real disaster. After multiple rounds of data cleaning, we then train and fit the data to the appropriate model to determine the accuracy of our predictions. To interact with our model, please type and enter a sentence down below. As the model begins to run, you will see the steps it goes through, and what step it is currently on.</p>
+                <p>We have utilized Natural Language Processing (NLP) to scan thousands of tweets to detect if a tweet is about a real disaster. After we cleaned the data, we then trained and tested multiple models until we settled on the SVM model. SVM has the best precision for deciding a disaster with a precision average of about 50%, where other models had about 35%. To interact with our model, please type and enter a sentence down below.</p>
             </section>
             <section id = 'dataDescription'>
                 <p>Dataset Description</p>
                 <p>The dataset that we chose comes from Kaggle. 
                     Examples of real disasters include: forest fires, tornados, hurricanes, tsunamis, earthquakes, shootings,  bombings, etc. 
-                    The training dataset contains five columns: id, keyword, location, text, target. 
-                    The testing dataset contains four columns: id, keyword, location, and text. We only utilized the text and target columns. The text is the raw tweet, and the target indicates if it is real (1) or not (0).
+                    The dataset contains five columns: id, keyword, location, text, target. We only utilized the text and target columns. The text is the raw tweet, and the target indicates if it is real (1) or not (0).
                     </p>
             </section>
             <section id = 'links'>
                 <p>Links</p>
                 <ul>
                     <li><a href = https://github.com/michellemckenzie/ecs171>Github Repo</a></li>
-                    <li><a href = https://www.kaggle.com/competitions/nlp-getting-started>Dataset</a></li>
+                    <li><a href = https://www.kaggle.com/datasets/vstepanenko/disaster-tweets>Dataset</a></li>
                 </ul>
 
                 <p>Members</p>
@@ -56,7 +55,6 @@
                     <p for = "userSentence">Enter a sentence:</p>
                     <input type = "text" id = "userSentence" name = "sentence" required >
                     <button id = "submit" onclick="sendReq(document.getElementById('userSentence').value)">Submit</button>
-                    <!-- <input type="submit" id = "submit" value="Submit" onclick="sendReq(document.getElementById('userSentence').value)"> -->
                 </div>
                 
             </div>
@@ -64,33 +62,25 @@
             <div id = "modelRunning">
                 <p>Model</p>
                 <ul>
-                    <li>convert to lowercase</li>
-                    <li>remove punctuation, numbers, links, parts of speech</li>
-                    <li>lemmatization</li>
-                    <li>correct misspellings</li>
-                    <li>bag of words</li>
-                    <li>checking models</li>
+                    <li>Dataset cleaning</li>
                     <ul>
-                        <li>linear regression</li>
-                        <li>logistic regression</li>
-                        <li>naive bayes</li>
-                        <li>tfidr vectorization</li>
+                        <li>convert to lowercase</li>
+                        <li>remove punctuation, numbers, links, parts of speech</li>
+                        <li>lemmatization</li>
                     </ul>
+                    
+                    <li>Bag of Words</li>
+                    <li>TFIDF Vectorization</li>
+                    <li>SVM Model</li>
                 </ul>
             </div>
 
             <div id = "results">
                 <p>Results</p>
+                <p id = "AnswerText"></p>
             </div>
 
-        </div>
-        
-
-        <div>
-            <input id="AnswerText" type="text" readonly/>
-        </div>
-
-   
+        </div>   
     </div>
     
     

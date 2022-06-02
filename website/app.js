@@ -46,7 +46,7 @@ function sendReq(req) {
             }
             console.log(response_from_server) // log response
             // set the read only response field with data received from server
-            document.getElementById("AnswerText").value = response_from_server; 
+            document.getElementById("AnswerText").textContent = response_from_server; 
     });
       
 }

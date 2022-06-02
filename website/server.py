@@ -1,6 +1,7 @@
 import flask
 from flask import request, jsonify
 from flask_cors import CORS
+from userinput import takeInput
 
 app = flask.Flask(__name__)
 CORS(app) # This is required for this backend server running on port 5000 
@@ -26,7 +27,14 @@ def input():
         input = body["inputText"]
     
     try:
-        output = int(input) * 3.1414 # you can replace this line with your model's output
+        output = takeInput(input)
+        print(output)
+
+        if output == 0:
+            output = "The sentence is not about a real disaster."
+        else:
+           output = "The sentence is about a real disaster."
+           
         data["answer"] = output # build response 
         data["success"] = True
     except:

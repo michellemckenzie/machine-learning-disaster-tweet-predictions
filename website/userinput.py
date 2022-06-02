@@ -19,8 +19,11 @@ from sklearn.metrics import classification_report
 from sklearn.metrics import accuracy_score
 import pickle
 
-filename = 'finalized_model.sav'
-loaded_model = pickle.load(open(filename, 'rb'))
+svm = 'finalized_model.sav'
+tfidf = 'tfidf_model.sav'
+
+svm_model = pickle.load(open(svm, 'rb'))
+tfidf_model = pickle.load(open(tfidf, 'rb'))
 
 # Lemmatize function
 
@@ -191,12 +194,14 @@ def process_data(input):
 
 
 # Example
-test = process_data("This is a test!!!")
-test = lemmatize_text(test)
 
-# return test
 
-print(classification_report(loaded_model, np.array(test)))
-print(accuracy_score(loaded_model,np.array(test)))
+def takeInput(text):
+    text = process_data(text)
+    text = lemmatize_text(text)
 
-print('did it work')
+    transformedText = tfidf_model.transform([text])
+
+    # return test
+    print(svm_model.predict(transformedText)[0])
+    return svm_model.predict(transformedText)[0]

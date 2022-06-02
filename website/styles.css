@@ -63,7 +63,7 @@ h1, h2{
 
 #results{
     padding: 20px;
-    background-color: white;
+    background-color: #c5d86d;
 }
 
 input{
@@ -105,6 +105,3 @@ input{
     margin-bottom: 100px;
 }
 
-#AnswerText{
-    margin-bottom: 200px;
-}
