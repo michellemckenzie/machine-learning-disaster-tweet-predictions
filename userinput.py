@@ -15,6 +15,12 @@ from nltk.stem import WordNetLemmatizer
 from nltk import WhitespaceTokenizer
 from nltk.corpus import wordnet
 nltk.download('averaged_perceptron_tagger')
+from sklearn.metrics import classification_report
+from sklearn.metrics import accuracy_score
+import pickle
+
+filename = 'finalized_model.sav'
+loaded_model = pickle.load(open(filename, 'rb'))
 
 # Lemmatize function
 
@@ -156,7 +162,6 @@ pronouns = {
     " im ": '',
     " u ": ''
 }
-
 articles = {
     " the ": ' ',
     " a ": ' ',
@@ -190,3 +195,8 @@ test = process_data("This is a test!!!")
 test = lemmatize_text(test)
 
 # return test
+
+print(classification_report(loaded_model, np.array(test)))
+print(accuracy_score(loaded_model,np.array(test)))
+
+print('did it work')
