@@ -16,3 +16,9 @@ https://datagy.io/python-remove-punctuation-from-string/
 https://stackoverflow.com/questions/35070452/how-to-correct-spelling-in-a-pandas-dataframe
 
 https://www.holisticseo.digital/python-seo/nltk/lemmatize
+
+# To run the demo website
+- make sure the current directory is website
+- run "npm start" and "python3 server.py"
+- after the frontend and backend server are running, open index.html with live server
+- test the model by typing different sentences
