@@ -1,0 +1,110 @@
+body {
+    font-family: "Montserrat";
+    display: flex;
+    justify-content: center;
+    background-color: #e3f6f5;
+}
+
+h1, h2{
+    text-align: center;
+}
+
+#container{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    width: 70vw;
+}
+
+#information{
+    margin-top: 20px;
+    height: auto;
+    margin-bottom: 5vh;
+    display: grid;
+    justify-content: space-between;
+    grid-template-columns: 32% 32% 32%;
+}
+
+
+
+#info, #dataDescription, #links{
+    padding: 15px;
+    border-radius: 30px;
+}
+
+#info{
+    background-color: #fdffcd;
+}
+
+#dataDescription{
+    background-color: #ffebbb;
+}
+
+#links{
+    background-color: #f9dacb;
+}
+
+#info:hover, #dataDescription:hover, #links:hover{
+    box-shadow: 0px 5px 5px 3px rgba(109, 107, 107, 0.2);
+}
+
+#userInput{
+    background-color: #bae8e8;
+    padding: 20px;
+}
+
+
+#modelRunning{
+    height: 250px;
+    background-color: white;
+    /* background-color: #dfef97; */
+    padding: 20px;
+}
+
+#results{
+    padding: 20px;
+    background-color: white;
+}
+
+input{
+    width: 15vw;
+    height: 20px;
+    border-style: none;
+    margin-bottom: 20px;
+}
+
+#submit{
+    /* width: 70px; */
+    /* height: 40px; */
+    padding: 8px;
+    border-radius: 30px;
+    border-style: none;
+    cursor: pointer;
+    background-color: white;
+}
+
+#submit:hover{
+    box-shadow: 0px 5px 5px 3px rgba(109, 107, 107, 0.2);
+    background-color: #478181;
+    color: white;
+}
+
+#pseudoForm{
+   display: flex;
+   flex-direction: column;
+   justify-content: space-between;
+   align-items: center;
+   height: 100px;
+   margin-top: 50px;
+}
+
+#interactive{
+    display: grid;
+    justify-content: space-between;
+    grid-template-columns: 30% 40% 30%;
+    margin-bottom: 100px;
+}
+
+#AnswerText{
+    margin-bottom: 200px;
+}
