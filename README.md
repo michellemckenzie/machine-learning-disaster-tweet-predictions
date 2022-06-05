@@ -14,6 +14,10 @@ https://stackoverflow.com/questions/35070452/how-to-correct-spelling-in-a-pandas
 
 https://www.holisticseo.digital/python-seo/nltk/lemmatize
 
+https://stackoverflow.com/questions/15586721/wordnet-lemmatization-and-pos-tagging-in-python
+
+https://www.geeksforgeeks.org/python-lemmatization-approaches-with-examples/
+
 # To run the demo website
 - Make sure the current directory is website
 - Run "npm start" and "python3 server.py"
