@@ -28,34 +28,35 @@ tfidf_model = pickle.load(open(tfidf, 'rb'))
 # Lemmatize function
 
 word_tokenizer = nltk.tokenize.WhitespaceTokenizer()
-lemmatizer = nltk.WordNetLemmatizer()
+wordnetlemmatizer = nltk.WordNetLemmatizer()
+pos_letters = ['V', 'R', 'J', 'N'] # possible first letters of pos
 
-
-def pos_tagger(tag):
-    if tag.startswith('J'):
-        return wordnet.ADJ
-    elif tag.startswith('V'):
-        return wordnet.VERB
-    elif tag.startswith('N'):
-        return wordnet.NOUN
-    elif tag.startswith('R'):
-        return wordnet.ADV
+def pos_functions(pos):
+    if pos.startswith(pos_letters[0]): # seeing if POS is a verb
+        return wordnet.VERB # corresponding verb function
+    elif pos.startswith(pos_letters[1]): # seeing if POS is an adverb
+        return wordnet.ADV # corresponding adverb function
+    elif pos.startswith(pos_letters[2]): # seeing if POS is an adjective
+        return wordnet.ADJ # corresponding adjective function
+    elif pos.startswith(pos_letters[3]): # seeing if POS is a noun
+        return wordnet.NOUN # corresponding noun function
     else:
         return None
 
 
 def lemmatize_text(input):
+    new_text = [] # initializing new list to store lemmatized words
 
-    tagged = nltk.pos_tag(nltk.word_tokenize(input))
-    tagged_wordnet = map(lambda x: (x[0], pos_tagger(x[1])), tagged)
-    new_lemmatized_text = []
+    sentence_words = nltk.word_tokenize(input) # splitting up sentence into words
+    pos_sentence_words = nltk.pos_tag(sentence_words) # getting the pos for each word
 
-    for word, tag in tagged_wordnet:
-        if tag is None:
-            new_lemmatized_text.append(word)
-        else:
-            new_lemmatized_text.append(lemmatizer.lemmatize(word, tag))
-    return " ".join(new_lemmatized_text)
+    for word, pos in pos_sentence_words:
+        if pos_functions(pos) is None:  # may not be pos tag
+            new_text.append(word) # adding original word to new list if no pos tag
+        else: 
+            new_lemmatized = wordnetlemmatizer.lemmatize(word, pos_functions(pos)) # passing corresponding pos function to lemmatizer
+            new_text.append(new_lemmatized) # adding lemmatized word to list is there'ss a pos tag
+    return " ".join(new_text) # getting rid of the commas between each word in the list
 
 
 # This is where the data cleaning and lemmatiztion occurs
